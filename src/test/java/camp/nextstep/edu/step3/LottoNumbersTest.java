@@ -25,6 +25,13 @@ public class LottoNumbersTest {
                 .isEqualTo(LottoTest.createLottoNumberList(new int[]{1, 2, 3, 4, 5, 6}));
     }
 
+    @DisplayName("로또를 잘못된 방법으로 추출한다면 에러가 발생한다.")
+    @Test
+    void invalidExtractTest() {
+        assertThatExceptionOfType(IllegalStateException.class)
+                .isThrownBy(() -> new LottoNumbers().extract(lottoNumbers -> lottoNumbers.remove(0)));
+    }
+
     @DisplayName("추출된 로또번호는 수정이 불가능하다")
     @Test
     void immutableTest() {
